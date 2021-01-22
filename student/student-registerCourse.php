@@ -1,0 +1,183 @@
+<?php
+session_start();
+include '../config.php';
+
+if(!isset($_SESSION["euid"]))
+{
+	header("Location: ../login.php");
+}
+
+$id = $_SESSION["euid"];
+$sql = "SELECT * FROM student WHERE euid = '$id'";
+$result = mysqli_query($db, $sql);
+$row = mysqli_fetch_assoc($result);
+
+$csql = "SELECT c.course_id as id, c.title as coursename, d.dept_name as dept_name, c.unit as unit, c.course_lecturer as lecturer, c.location as location, c.semester as semester, c.time as classTime FROM courses c, department d WHERE c.course_id NOT IN ( SELECT course_id FROM cart WHERE sid='$id' ) AND c.course_id NOT IN ( SELECT course_id FROM course_registered WHERE sid='$id') AND c.department = d.dept_id AND c.semester = 'FALL'";
+$cresult = mysqli_query($db, $csql);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GROUP 404 | Register Course</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="icon" href="../img/unt_icon.png"> <!-- show unt logo -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="../css/studentHome.css">
+    <link rel="stylesheet" href="../css/adminLTE.css">
+    <link rel="stylesheet" href="../css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="../css/select.dataTables.min.css">
+    <link type="text/css" href="../css/dataTables.checkboxes.css" rel="stylesheet" />
+    <script src="../js/dataTables.checkboxes.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+		<script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery.dataTables.min.js"></script>
+    <script src="../js/dataTables.select.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>   
+    <script src="../js/base-loading.js"></script>
+    <style>
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('../../img/pageloader.gif') 50% 50% no-repeat rgb(249,249,249);
+            opacity: .6;
+        }
+    </style>
+    
+</head>
+  <body id="#home">     
+    <div class="loader"></div>
+    <?php
+      if(mysqli_num_rows($cresult) > 0)
+      {
+    ?>
+        <div class="container-fluid">
+          <div class="box box-primary">
+          <br>
+          <br>
+          <br>
+          <table id='theTable' class="display" style='width:100%;'>
+          <thead>
+			      <tr>
+              <th></th>
+				      <th class='col-6'>Course ID</th>
+              <th class='col-6'>Course Title</th>
+              <th class='col-6'>Department</th>
+				      <th class='col-6'>Credit</th>
+              <th class='col-6'>Course Lecturer</th>
+              <th class='col-6'>Class Time</th>
+              <th class='col-6'>Location</th>
+            </tr>
+          </thead>
+            <?php
+              while($crow = mysqli_fetch_array($cresult))
+              {
+            ?>
+                <tr id="<?php echo $crow["id"]; ?>]">
+                    <td><input type="checkbox" name="course_id[]" class="addcourse" value="<?php echo $crow["id"];?>"/></td>
+                    <td><?php echo $crow["id"];?></td>
+                    <td><?php echo $crow["coursename"];?></td>
+                    <td><?php echo $crow["dept_name"];?></td>
+                    <td><?php echo $crow["unit"];?></td>
+                    <td><?php echo $crow["lecturer"];?></td>
+                    <td><?php echo $crow["classTime"];?></td>
+                    <td><?php echo $crow["location"];?></td>
+                </tr>
+            <?php
+              }
+            ?>
+            <tfoot>
+            </tfoot>
+          </table>
+          <br>
+		      <br>
+		      <button type="button" class="btn btn-success" name="btn_add" id="btn_add">Add to Shopping Cart</button>	
+      </div>
+    </div>
+    <?php
+      }
+    ?>
+  </div>
+  </body>
+</html>
+<!---Scripts-->
+<script type="text/javascript">
+    $(window).load(function() {
+        $(".loader").fadeOut("slow");
+    });
+
+  var table;
+  $( document ).ready(function(){
+    table = $('#theTable').DataTable({
+        responsive: true,
+        "pageLength": 10,
+        "lengthMenu": [10, 20, 30, "All"],
+        initComplete: function () {
+            this.api().columns(3).every( function () {
+            var column = this;
+            $('#theTable .head .head_hide').html('');
+
+            var select = $('<select id="formfilter" class="filterdropdown"><option value="">'+$(column.header()).text()+'</option></select>')
+            .appendTo( $(column.header()).empty())
+            .on( 'change', function () {
+                var val = $.fn.dataTable.util.escapeRegex(
+                    $(this).val()
+                );
+                column
+                    .search( val ? '^'+val+'$' : '', true, false )
+                    .draw();
+            });
+
+            column.data().unique().sort().each( function ( d, j ) {
+            select.append( '<option value="'+d+'">'+d+'</option>' )
+            });
+            });
+        }
+    });
+
+$('#btn_add').click(function(){
+
+var id = []; //use to store the courses selected
+
+//store the courses into array
+$(':checkbox:checked').each(function(i){
+  id[i] = $(this).val();
+});
+
+if(id.length === 0) //tell you if the array is empty
+{
+    alert("Please select at least one course");
+}
+else if(confirm("Confirm to add the course to shopping cart?"))
+{
+
+    $.post("scripts/student-registerCourse_check.php",
+    {
+      "id" : id
+    },
+		function(result){
+		  if($.trim(result) == "error"){
+			  alert("Fail to Add Course to Shopping Cart");
+	  	} else {
+			  alert("Course Added Successfull");
+		  }
+      document.location="student-registerCourse.php";
+    }
+    );
+}
+else
+{
+  return false;
+}
+});
+  });
+
+</script>

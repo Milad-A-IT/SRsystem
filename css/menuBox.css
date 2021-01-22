@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*nav*/
+
+.logo{
+    width: 121px;
+    height: 57px;
+    margin-left: -21px;
+    margin-top: -5px;
+}
+
+#mynav-taggle {
+    font-size: 30px;
+    line-height: 60px;
+    margin-left: 15px;
+    color: rgb(183, 206, 184);
+    width: 30px;
+}
+
+#mynav-taggle:hover {
+    color: rgba(149, 241, 154, 0.918);
+}
+
+/*click to hide nav*/
+
+.cloud1 {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    line-height: 60px;
+    margin-left: 10px;
+    width: 300px;
+    transition: all 0.3s ease-in;
+}
+
+
+/*size of nav when hide*/
+
+.box1 {
+    width: 232px;
+    font-size: x-large;
+}
+
+
+/*nav-right*/
+
+.right-bar {
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    position: absolute;
+    right: 20px;
+    line-height: 55px;
+    justify-content: space-around;
+}
+
+.colorbox {
+    width: 150px;
+    height: 150px;
+    box-shadow: 2px 2px 5px rgb(179, 178, 178);
+    background-color: rgb(251, 253, 250);
+    margin-left: -52px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.colorbox p {
+    margin: 0;
+}
+
+.colorbox span {
+    margin: 15px;
+    cursor: pointer;
+    margin-top: -5px;
+}
+
+
+/*small triangle*/
+
+.triangle {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    border-width: 20px;
+    border-style: solid;
+    border-color: transparent transparent rgb(153, 235, 167) transparent;
+}
+
+.tools {
+    margin-top: -45px;
+    margin-left: -10px;
+    position: relative;
+}
+
+.showBlock {
+    display: block;
+}
+
+.noneBlock {
+    display: none;
+}
+
+#color-bar {
+    cursor: pointer;
+}
+
+.main-menu {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    top: 60px;
+    position: relative;
+}
+
+#themenu {
+    height: 650px;
+    position: relative;
+    left: 0px;
+    transition: all 0.3s ease-in;
+}
+
+.small-menu {
+    width: 85px;
+}
+
+.big-menu {
+    width: 295px;
+}
+
+#left-menu {
+    position: inherit;
+    top: 60px;
+    left: 0;
+    width: 280px;
+    height: auto;
+    z-index: 9999;
+    transition: all 0.3s ease-in;
+    box-shadow: 2px 10px 5px rgb(179, 178, 178);
+}
+
+#right-menu {
+    position: absolute; 
+    top: 132px;
+    left: 0;
+    width: 70px;
+    height: 650px;
+    z-index: 9999;
+    transition: all 0.3s ease-in;
+ /*   box-shadow: 2px 10px 5px rgb(179, 178, 178); */
+    text-align: center;
+}
+
+.list-group-item {
+    height: 64px;
+    line-height: 50px;
+    font-size: 17px;
+    box-shadow: 2px 2px 5px gray; 
+    background-color: aliceblue;
+}
+
+.show-nav {
+    transform: translateX(0);
+}
+
+.hide-nav {
+    transform: translateX(-280px);
+}
+
+.hide-nav2 {
+    transform: translateX(-70px);
+}
+
+.hide-nav3 {
+    transform: translateX(-230px);
+}
+
+.right-box {
+    height: 660px;
+    transition: all 0.3s ease-in;
+}
+
+.small-box {
+    width: 85%;
+}
+
+.big-box {
+    width: 95%;
+}
+
+.iframe-box {
+    width: 100%;
+    height: 647px;
+}
+
+.hand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 262px;
+    width: 280px;
+}
+
+.radiusPhoto img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 8px;
+}
+
+.logined span {
+    margin: 5px;
+    color: green;
+}

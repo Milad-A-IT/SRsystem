@@ -1,0 +1,245 @@
+body
+{
+    font-family: 'Nunito', sans-serif;
+    background-color: rgb(230, 253, 248);
+}
+
+.navbar
+{
+	box-shadow: 2px 5px 10px rgb(178, 179, 178);
+    background-image: linear-gradient(#54af74, #237005);
+    overflow: hidden;
+    width: 100%;
+}
+
+
+.navbar-nav li a:hover, li a:active
+{
+	color: #000000 !important;
+}
+.navbar li a, .navbar-brand 
+{
+   color: #FFFFFF !important;
+}
+ .navbar
+{
+	border-color: #FFFFFF;
+}
+.navbar-toggle
+{
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+#login-head
+{
+    color: #FFFFFF;
+}
+
+#staff-login-section
+{
+    font-size: 250%;
+    margin-top: 100px;
+    text-align: center;
+}
+
+#staff-login-section input
+{
+    width: 300px;
+    margin: 0 auto;
+    border-radius: 0;
+}
+
+#uval, #pval
+{
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+.login-button 
+{
+    background-color: #FFFFFF;
+    border: none;
+    color: #000000;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#other-user a 
+{
+    color: #FFFFFF;
+}
+
+#other-user
+{
+    margin-top: 10px;
+    text-align: center;
+}
+/*
+footer
+{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    overflow: hidden;
+}
+*/
+
+
+#error-section
+{   
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 100px;
+}
+
+ol.breadcrumb
+{
+    background-color: #22AD8D;
+    color: #FFFFFF;
+}
+
+header
+{
+    background-color: #22AD8D;
+    padding: 20px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+#staff-section
+{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+header
+{
+    background-color: #22AD8D;
+    padding: 20px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.button 
+{
+    background-color: #25B99A;
+    border: none;
+    color: #FFFFFF;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button:hover
+{
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.well-heading
+{
+    text-align: center;
+}
+
+.well
+{
+    background-color: #13a354;
+    margin-top: 30px;
+    text-align: center;
+    border: 0;
+    border-radius: 0;
+    color: #FFFFFF;
+    box-shadow: 10px 10px 5px #1D957b;
+    margin-top: 20px;
+}
+
+#staff-section a 
+{
+    color: #FFFFFF;
+}
+
+#staff-section a:hover 
+{
+    text-decoration: none;
+}
+
+.well:hover 
+{
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+.ms-button 
+{
+    background-color: #22AD8D;
+    border: none;
+    color: #FFFFFF;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    width: 225px;
+    margin-bottom: 5px;
+}
+
+.ms-button:hover
+{
+    background-color: #FFFFFF;
+    color: black;
+}
+.mainWrap {
+	/*width: 100%;*/
+	min-width: 320px;
+	width: 80%;
+    margin: auto;
+}
+
+footer{
+    position: relative;
+    bottom:0;
+    width:100%;
+    height:105px;
+}
+
+footer .copyrights{
+    position: fixed;
+    bottom:0;
+    width:100%;
+    height:100px;
+    background-image: url("../img/footer_logo.png");
+    background-repeat:no-repeat;
+    background-position:right;
+    background-color:#307d36;
+    color: #eae7ec;
+    padding: 20px 500px 90px 0px;
+    line-height: 22px;
+    font-size: 12px;
+}
+
+footer .copyrights .info {
+    float: left;
+    float: none;
+    display: block;
+}
+footer .copyrights .info span {
+    padding-right: 45px;
+}
+footer .copyrights {
+    text-align: left;
+}
+
+footer .copyrights .info {
+    float: none;
+    display: block;
+    padding: 0 30px;
+}
+footer .copyrights .info span {
+    display: block;
+    padding: 0;
+
+}
